@@ -31,8 +31,8 @@ public class ProductoController {
     }
 
     // Funcion para crear un producto.
-    @PostMapping("/{id}")
-    public ResponseEntity<Producto> guardar(@PathVariable int id, @RequestBody Producto p){
+    @PostMapping
+    public ResponseEntity<Producto> guardar(@RequestBody Producto p){
         return ResponseEntity.ok(productoService.crear(p));
     }
 

@@ -10,9 +10,8 @@ import lombok.Data;
 public class Producto {
 
     @Id
+    private Integer id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;  // ← Cambiado a Integer + AUTO_INCREMENT
-
     @NotBlank(message = "Nombre no puede estar vacio")
     @Column(nullable = true)
     private String nombre;

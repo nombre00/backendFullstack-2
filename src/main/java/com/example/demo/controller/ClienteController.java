@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 // Manejo de endpoints.
 
 @RestController
-@RequestMapping("clientes")
+@RequestMapping("/clientes")
 @RequiredArgsConstructor
 @CrossOrigin("*") // Autoriza comunicaciones no seguras.
 public class ClienteController {
@@ -28,8 +28,8 @@ public class ClienteController {
         return clienteService.buscarPorId(id);
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Cliente> guardar(@PathVariable int id, @RequestBody Cliente c){
+    @PostMapping
+    public ResponseEntity<Cliente> guardar(@RequestBody Cliente c){
         return ResponseEntity.ok(clienteService.crear(c));
     }
 
@@ -40,6 +40,7 @@ public class ClienteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> borrar(@PathVariable int id){
+        clienteService.borrar(id);
         return ResponseEntity.noContent().build();
     }
 }
